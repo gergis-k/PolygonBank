@@ -1,0 +1,57 @@
+﻿@using PolygonBank.Models
+@model IEnumerable<Customer>
+
+    <div class="limiter" id="divlimiter">
+        <div class="container">
+            <h1 class="text-center fw-bold fs-1 py-3">Customers List</h1>
+            
+            <div class="table-responsive">
+                
+                <table class="text-center table table-hover table-bordered">
+                    
+                    <thead class="table-dark">
+                        
+                        <tr class="table-head">
+                            <th>Id</th>
+                            <th >Name</th>
+                            <th >Email</th>
+                            <th >Balance</th>
+                        </tr>
+                        
+                    </thead>
+                    
+                    <tbody class="table-light">
+
+                    @{
+                        if (Model.Any())
+                        {
+                            @foreach(var item in Model)
+                            {
+                                <tr as>
+                                    <td ><a href="/Home/Customer/@item.Id">@item.Id</a></td>
+                                    <td ><a href="/Home/Customer/@item.Id">@item.FullName</a></td>
+                                    <td ><a href="/Home/Customer/@item.Id">@item.Email</a></td>
+                                    <td ><a href="/Home/Customer/@item.Id">@item.Balance</a></td>
+                                </tr> 
+                            }
+                        }
+                        else
+                        {
+                             <tr as>
+                                <td >N/A</td>
+                                <td >N/A</td>
+                                <td >N/A</td>
+                                <td >N/A</td>
+                             </tr> 
+                        }
+                    }
+                        
+                    </tbody>
+                    
+                </table>
+                
+            </div>
+            
+        </div>
+        
+    </div>

@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<header class="bg-img-a" id="bdy">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8">
+                <div class="text-center my-5">
+                    <h1 class="display-6 fw-bolder text-white mb-2">
+                        Welcome To <span class="text-warning fst-italic">UnitedBank</span>, banking made for high net-worth individuals
+                    </h1>
+                    <p class="lead text-white-50 mb-4">
+                        We are a new kind of exclusive bank, we are more than a checking account, more than a debit card, and more than you'd expect from your bank.
+                        <br />
+                        Safe,Secure And Convenient Banking.
+                    </p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn btn-primary btn-lg px-4 me-sm-3" asp-area="" asp-controller="Home" asp-action="Customers">CUSTOMERS</a>
+                        <a class="btn btn-outline-light btn-lg px-4" asp-area="" asp-controller="Home" asp-action="Transactions">TRANSACTION</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

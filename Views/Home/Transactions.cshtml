@@ -1,0 +1,63 @@
+﻿@using PolygonBank.DTO
+@model IEnumerable<TransactionDto>
+
+    <div class="limiter" id="divlimiter">
+        <div class="container">
+            <h1 class="text-center fw-bold fs-1 py-3">Transactions List</h1>
+            
+            <div class="table-responsive">
+                
+                <table class="text-center table table-hover table-bordered">
+                    
+                    <thead class="table-dark">
+                        
+                        <tr class="table-head">
+                            <th class="column2">Id</th>
+                            <th class="column3">Sender</th>
+                            <th class="column3">Reciever</th>
+                            <th class="column3">Amount</th>
+                            <th class="column4">Serial</th>
+                            <th class="column3">Date</th>
+                        </tr>
+                        
+                    </thead>
+                    
+                    <tbody class="table-light">
+
+                    @{
+                        if (Model.Any())
+                        {
+                            @foreach(var item in Model)
+                            {
+                                <tr as>
+                                    <th >@item.Id</th>
+                                    <th>@item.Sender</th>
+                                    <th >@item.Reciever</th>
+                                    <th >@item.Amount</th>
+                                    <th>@item.Serial</th>
+                                    <th >@item.Date</th>
+                                </tr> 
+                            }
+                        }
+                        else
+                        {
+                             <tr as>
+                                    <th class="column2">N/A</th>
+                                <th >N/A</th>
+                                <th >N/A</th>
+                                <th >N/A</th>
+                                <th >N/A</th>
+                                <th >N/A</th>
+                             </tr> 
+                        }
+                    }
+                        
+                    </tbody>
+                    
+                </table>
+                
+            </div>
+            
+        </div>
+        
+    </div>

@@ -1,0 +1,152 @@
+﻿@using PolygonBank.Models
+@using PolygonBank.DTO
+@model TransactionDto
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            
+            <div class="modal-content">
+                
+                <div class="modal-header">
+                    <h5 class="modal-title fs-2" id="staticBackdropLabel">Money Transfer</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                
+                <div class="modal-body fs-2">
+                    
+                @using (Html.BeginForm("Customer", "Home"))
+                {
+
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <select asp-for="Reciever"
+                            class="form-select form-select-lg mb-3"
+                            aria-label=".form-select-lg example">
+                            
+                            @foreach(var item in ViewBag.CustomersList)
+                            {
+                                <option value="@item.Username">@item.Username</option>
+                            }
+
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Amount" for="amountin" class="form-label"></label>
+                        <input asp-for="Amount" class="form-control form-control-lg" id="amountin" type="text">
+                    </div>
+
+                    <div class="mb-3 float-end">
+                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-lg btn-primary">Go</button>
+                    </div>
+                }
+
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div class="limiter" id="divlimiter">
+        
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-sm-10 mx-auto">
+                    
+                    <div class="card mt-5 mb-2">
+                        
+                        <div class="card-body">
+                            
+                            <img src="~/img/@ViewBag.customer.AvatarSrc" alt="Avatar" class="avatar img-thumbnail float-start me-4">
+
+                            <h5 class="card-title fs-2 mt-4 fw-bold">@ViewBag.customer.FullName</h5>
+                            
+                            <p class="card-text fs-4 mb-2 text-muted">Username: @ViewBag.customer.Username</p>
+
+                            <p class="card-text fs-4 mb-2 text-muted">Email: @ViewBag.customer.Email</p>
+
+                            <p class="card-text fs-4 mb-2 text-muted">Balance: @ViewBag.customer.Balance $</p>
+
+                            <button type="button" class="btn btn-primary float-end" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                Transfer
+                            </button>
+                        
+                        </div>
+                        
+                    </div>
+
+                </div>
+
+                <div class="col-sm-10 mx-auto">
+
+                    <div class="card mt-2 mb-5">
+
+                        <div class="card-body">
+
+                            <h1 class="text-center fw-bold fs-3">Received</h1>
+
+                            <div class="table-responsive">
+
+                                <table class="text-center table table-hover table-bordered">
+
+                                    <thead class="table-dark">
+                                        <tr class="table-head">
+                                            <th>Id</th>
+                                            <th>Sender</th>
+                                            <th>Amount</th>
+                                            <th>Date</th>
+                                            <th>Serial</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody class="table-light">
+                                        @{
+                                            if (ViewBag.TransfersList.Count > 0)
+                                            {
+                                                @foreach(var item in ViewBag.TransfersList)
+                                                {
+                                                    <tr as>
+                                                        <td>@item.Id</td>
+                                                        <td>@item.Sender</td>
+                                                        <td>@item.Amount</td>
+                                                        <td>@item.Date</td>
+                                                        <td>@item.Serial</td>
+                                                    </tr> 
+                                                }
+                                            }
+                                            else
+                                            {
+                                                 <tr as>
+                                                    <td>N/A</td>
+                                                    <td>N/A</td>
+                                                    <td>N/A</td>
+                                                    <td >N/A</td>
+                                                    <td >N/A</td>
+                                                 </tr> 
+                                            }
+                                        }
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+
+            </div>
+            
+        </div>
+        
+    </div>
